@@ -1,0 +1,33 @@
+---
+import { Picture } from "astro:assets";
+import ImageHero from "../assets/img/sallecinema.webp"; // Importer l'image
+---
+
+<section class="relative w-full h-screen">
+    <!-- Image background with blue overlay using <picture> -->
+    <div class="absolute inset-0 w-full h-full">
+        <Picture
+            src={ImageHero}
+            alt="Festival image"
+            class="w-full h-full object-cover"
+        />
+        <!-- Blue overlay with 70% opacity -->
+        <div class="absolute inset-0 bg-blue-950 opacity-70"></div>
+    </div>
+
+    <!-- Content in the bottom right -->
+    <div class="relative z-10 flex items-end h-full">
+        <div class="bg-white p-9 max-w-3xl w-full shadow-lg">
+            <h2
+                class="absolute top-1/2 left-1/3 transform -translate-x-1/2 text-4xl font-bold text-white z-20"
+            >
+                Vis'Sport, un festival audiovisuel / numérique
+            </h2>
+            <p class="text-gray-700 mt-15 text-2xl">
+                Une opportunité de passer un moment de partage amusant et
+                divertissant en famille ou entre amis, du 19 au 21 septembre
+                2025.
+            </p>
+        </div>
+    </div>
+</section>

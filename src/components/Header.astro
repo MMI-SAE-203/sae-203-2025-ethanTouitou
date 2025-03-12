@@ -1,0 +1,78 @@
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuButton = document.querySelector("#menu-button");
+        const navMenu = document.querySelector("#nav-menu");
+
+        if (!menuButton || !navMenu) return;
+
+        menuButton.addEventListener("click", () => {
+            const isActive =
+                menuButton.getAttribute("aria-expanded") === "true";
+            menuButton.setAttribute("aria-expanded", (!isActive).toString());
+
+            if (isActive) {
+                navMenu.classList.remove("!visible", "!opacity-100");
+            } else {
+                navMenu.classList.add("!visible", "!opacity-100");
+            }
+        });
+
+        document.querySelectorAll("#nav-menu a").forEach((link) => {
+            link.addEventListener("click", () => {
+                menuButton.setAttribute("aria-expanded", "false");
+                navMenu.classList.remove("!visible", "!opacity-100");
+            });
+        });
+    });
+</script>
+
+<header
+    class="flex items-center justify-between px-4 bg-blue-950 gap-8 h-20 text-white"
+>
+    <a
+        href="/"
+        aria-label="Home"
+        style="font-family: 'Bungee', cursive; font-size: 1.5rem;">Vis’Sport</a
+    >
+    <button
+        id="menu-button"
+        class="relative z-10 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-[2px] *:w-full *:transform *:rounded-full *:bg-white *:transition *:duration-300"
+        aria-expanded="false"
+    >
+        <span class="menu-bar translate-y-0 rotate-0"></span>
+        <span class="menu-bar -translate-y-0 -rotate-0"></span>
+    </button>
+    <nav
+        id="nav-menu"
+        class="invisible opacity-0 flex-1 px-6 py-12 flex justify-end mt-20 flex-col fixed z-10 inset-0 bg-indigo-50 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
+    >
+        <ul class="flex flex-col gap-4 lg:flex-row">
+            <li>
+                <a class="block p-4 rounded-lg text-white" href="/properties/"
+                    >Programme</a
+                >
+            </li>
+            <li>
+                <a class="block p-4 rounded-lg text-white" href="/buy"
+                    >Partenaires</a
+                >
+            </li>
+            <li>
+                <a class="block p-4 rounded-lg text-white" href="/sell"
+                    >Billetterie</a
+                >
+            </li>
+            <li>
+                <a class="block p-4 rounded-lg text-white" href="/manage"
+                    >Invités</a
+                >
+            </li>
+            <li>
+                <a
+                    class="block p-4 rounded-lg text-white border border-white"
+                    href="/resources">Contact</a
+                >
+            </li>
+        </ul>
+    </nav>
+</header>
