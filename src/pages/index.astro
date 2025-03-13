@@ -1,8 +1,12 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Carrousel from "../components/Carrousel.astro";
 import Hero from "../components/Hero.astro";
+import CardFilm from "../components/CardFilm.astro";
+import { getTowFilms } from "../../backend/backend.mjs";
+
+const films = await getTowFilms();
+console.log(films);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -11,4 +15,86 @@ import Hero from "../components/Hero.astro";
 <Layout>
 	<Hero />
 	<Carrousel />
-</Layout>
+	<section class="py-16 bg-blue-50 pt-20 text-center">
+		<div class="container mx-auto px-6">
+			<!-- Section 1 : Bienvenue au festival -->
+			<div class="text-center mb-16">
+				<h2 class="text-3xl font-bold text-blue-900 mb-4">
+					Bienvenue au festival Vis'Sport
+				</h2>
+				<p class="text-lg text-gray-700 pb-6">
+					Vis'Sport est un festival alliant projections de films et
+					activités sportives. Partagez un moment unique en famille ou
+					entre amis avec des projections exclusives et des ateliers
+					interactifs !
+				</p>
+				<a
+					class="mt-6 px-8 py-2 text-white bg-amber-500 hover:bg-orange-600 rounded-full font-semibold"
+				>
+					À PROPOS
+				</a>
+			</div>
+
+			<!-- Section 2 : Programme du festival -->
+			<div class="text-center">
+				<h3 class="text-2xl font-semibold text-blue-900 mb-4">
+					Programme du Festival
+				</h3>
+				<p class="text-lg text-gray-700">
+					Des projections, des débats, des ateliers... Découvrez les
+					événements marquants de cette édition.
+				</p>
+			</div>
+		</div>
+		<h3 class="text-2xl font-semibold text-blue-900 mb-4 pt-12">
+			Les films à l'affiche
+		</h3>
+		{films.map((film) => <CardFilm {...film} />)}
+		<a
+			class="mt-6 px-8 py-2 text-white bg-amber-500 hover:bg-orange-600 rounded-full font-semibold"
+		>
+			Voir plus
+		</a>
+		<div class="container mx-auto px-6 pb-6">
+			<h3 class="text-2xl font-semibold text-blue-900 mb-4 pt-12">
+				Les Activités du Festival Vis'Sport
+			</h3>
+
+			<div class="space-y-6">
+				<div>
+					<h4 class="text-lg font-semibold">
+						1. Soirée de clôture avec remise de prix
+					</h4>
+					<p class="text-gray-700">
+						Célébration des films et projets les plus marquants du
+						festival.
+					</p>
+				</div>
+
+				<div>
+					<h4 class="text-lg font-semibold">
+						2. Séance de sport et film
+					</h4>
+					<p class="text-gray-700">
+						Projections et activités sportives, pour vivre le sport
+						à travers le cinéma.
+					</p>
+				</div>
+				<div>
+					<h4 class="text-lg font-semibold">
+						3. Exposition interactive : L’histoire du sport
+					</h4>
+					<p class="text-gray-700">
+						Explorez l'évolution du sport à travers une exposition
+						immersive.
+					</p>
+				</div>
+			</div>
+		</div>
+		<a
+			class="mt-6 px-8 py-2 text-white bg-amber-500 hover:bg-orange-600 rounded-full font-semibold"
+		>
+			Voir plus
+		</a>
+	</section></Layout
+>

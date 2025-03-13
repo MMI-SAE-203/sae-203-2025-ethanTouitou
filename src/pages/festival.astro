@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Picture } from "astro:assets";
+import Image1 from "../assets/img/imagefilm.webp";
+import Image2 from "../assets/img/mambreequipe.webp";
+---
+
+<Layout>
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <!-- Titre de la section -->
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-8">
+                Vis'sport
+            </h2>
+
+            <!-- Description du festival -->
+            <p class="text-lg text-gray-700 mb-6">
+                Le Festival Lumière Courte est né d'une passion commune pour le
+                cinéma et le sport. Fondé en 2024 par une équipe d'amateurs
+                d'art et d'athlètes passionnés, ce festival unique vise à mettre
+                en lumière les liens étroits entre ces deux univers.
+            </p>
+
+            <p class="text-lg text-gray-700 mb-6">
+                Chaque année, Lumière Courte propose une programmation variée
+                alliant projections de courts-métrages, documentaires, et
+                activités interactives pour les amateurs de cinéma, les fans de
+                sport, et les curieux de tout horizon.
+            </p>
+
+            <!-- Image et vidéo -->
+            <div class="mb-8 flex justify-center">
+                <Picture
+                    src={Image1}
+                    alt="Image du Festival"
+                    class="w-128 h-128 object-cover rounded-lg mb-4"
+                />
+            </div>
+
+            <!-- Objectifs -->
+            <h3 class="text-2xl font-semibold text-blue-900 mb-4">
+                Objectifs :
+            </h3>
+            <ul class="list-disc pl-6 text-lg text-gray-700 mb-8">
+                <li>
+                    Promouvoir : "Faire découvrir des créations audiovisuelles
+                    qui célèbrent les valeurs du sport."
+                </li>
+                <li>
+                    Éduquer : "Sensibiliser le public aux valeurs de
+                    dépassement, de persévérance, et de travail en équipe à
+                    travers des œuvres captivantes."
+                </li>
+                <li>
+                    Connecter : "Créer un espace d'échange entre artistes,
+                    sportifs, et le public."
+                </li>
+            </ul>
+
+            <!-- Équipe -->
+            <h3 class="text-2xl font-semibold text-blue-900 mb-4">
+                L’équipe derrière Lumière Courte
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <Picture
+                        src={Image2}
+                        alt="Jean Dupont"
+                        class="w-32 h-32 rounded-full mx-auto mb-2"
+                    />
+                    <p class="font-semibold">Jean Dupont</p>
+                    <p class="text-gray-600">Directeur artistique</p>
+                </div>
+                <div class="text-center">
+                    <Picture
+                        src={Image2}
+                        alt="Jean Dupont"
+                        class="w-32 h-32 rounded-full mx-auto mb-2"
+                    />
+                    <p class="font-semibold">Marie Martin</p>
+                    <p class="text-gray-600">Responsable communication</p>
+                </div>
+                <div class="text-center">
+                    <Picture
+                        src={Image2}
+                        alt="Jean Dupont"
+                        class="w-32 h-32 rounded-full mx-auto mb-2"
+                    />
+                    <p class="font-semibold">Thomas Leblanc</p>
+                    <p class="text-gray-600">Responsable technique</p>
+                </div>
+                <div class="text-center">
+                    <Picture
+                        src={Image2}
+                        alt="Jean Dupont"
+                        class="w-32 h-32 rounded-full mx-auto mb-2"
+                    />
+                    <p class="font-semibold">Camille Durand</p>
+                    <p class="text-gray-600">Chargée des ateliers</p>
+                </div>
+            </div>
+
+            <!-- Message de remerciement -->
+            <p class="text-center text-lg text-gray-700 mt-8">
+                Un grand merci à notre équipe de bénévoles sans qui le festival
+                ne serait pas possible !
+            </p>
+        </div>
+    </section>
+</Layout>

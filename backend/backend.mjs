@@ -1,4 +1,5 @@
 import PocketBase from 'pocketbase';
+
 const pb = new PocketBase('http://127.0.0.1:8090');
 
 // 1) récupérer la liste de tous les films triés par date de projection
@@ -68,5 +69,20 @@ export async function createOrUpdate(collection, data, id = null) {
     } else {
         const newRecord = await pb.collection(collection).create(data);
         return newRecord;
+    }
+}
+
+export async function getTowFilms() {
+    try {
+        // Récupérer seulement 2 films, triés par 'date_projection'
+        const records = await pb.collection('Film').getList(1, 2, {
+            sort: 'date_projection', // Trie par la date de projection
+        });
+
+        // Retourner les 2 premiers films
+        return records.items;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des films:', error);
+        return [];
     }
 }

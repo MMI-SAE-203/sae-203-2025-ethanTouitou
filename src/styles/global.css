@@ -3,3 +3,7 @@
 @theme components {
     --font-cursive: 'Bungee', cursive;
 }
+
+body {
+    background-color: #E8F5FF;
+}

@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CardFilm from "../../components/CardFilm.astro";
+import { getFilms } from "../../../backend/backend.mjs";
+const films = await getFilms();
+---
+
+<Layout>
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-8">
+                Découvrez les films du festival Vis'Sport
+            </h2>
+            <p class="text-lg text-gray-700">
+                Explorez notre sélection de films captivants qui célèbrent le
+                monde du sport à travers des récits inspirants, des compétitions
+                palpitantes et des histoires humaines. Chaque film est une
+                invitation à vivre le sport autrement, que ce soit sur le
+                terrain, derrière la caméra ou dans les coulisses. Découvrez ces
+                œuvres qui marquent l'univers du cinéma et du sport, et
+                laissez-vous emporter par l'émotion et la passion qu'elles
+                dégagent.
+            </p>
+        </div>
+    </section>
+    {films.map((film) => <CardFilm {...film} />)}
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-8">
+                Activités et Ateliers
+            </h2>
+            <ul class="list-disc pl-6 text-lg text-gray-700">
+                <li>Stands interactifs avec des coachs sportifs locaux</li>
+                <li>Ateliers créatifs : Réalisez votre mini-documentaire</li>
+                <li>Expositions audiovisuelles sur le sport</li>
+            </ul>
+        </div>
+    </section>
+</Layout>
