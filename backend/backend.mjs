@@ -4,10 +4,25 @@ const pb = new PocketBase('http://127.0.0.1:8090');
 
 // 1) récupérer la liste de tous les films triés par date de projection
 export async function getFilms() {
-    const records = await pb.collection('Film').getFullList({
-        sort: 'date_projection',
-    });
-    return records;
+    try {
+        // Récupère tous les films de la collection "Film"
+        let records = await pb.collection('Film').getFullList({
+            sort: 'date_projection',
+        });
+
+        // Ajoute l'URL de l'image à chaque film
+        records = records.map((film) => {
+            film.imageUrl = pb.files.getURL(film, film.affiche); // `affiche` est le champ image dans le film
+            return film;
+        });
+
+        console.log("Films with image URLs:", records); // Affiche les films avec les URLs
+
+        return records;  // Retourne la liste des films avec l'URL de l'image
+    } catch (error) {
+        console.error('Erreur lors de la récupération des films:', error);
+        return [];  // Retourne un tableau vide en cas d'erreur
+    }
 }
 
 // 2) récupérer la liste de toutes les activités triées par date
@@ -19,16 +34,36 @@ export async function getActivites() {
 }
 
 // 3) récupérer la liste de tous les acteurs / réalisateurs triés par ordre alphabétique
+export async function getInvite(id) {
+    try {
+        let data = await pb.collection('Invite').getOne(id);
+        data.imageUrl = pb.files.getURL(data, data.photo);
+        console.log("data", data);
+
+        return data;
+    } catch (error) {
+        console.log('Une erreur est survenue en lisant la fiche de l invité', error);
+        return null;
+    }
+}
+
 export async function getInvites() {
-    const records = await pb.collection('Invite').getFullList({
-        sort: 'nom',
-    });
-    return records;
+    try {
+        let data = await pb.collection('Invite').getFullList();
+
+        console.log("data", data);
+
+        return data;
+    } catch (error) {
+        console.log('Une erreur est survenue en lisant la fiche de l invité', error);
+        return null;
+    }
 }
 
 // 4) récupérer les infos d'un film par son ID
 export async function getFilmById(id) {
-    const record = await pb.collection('Film').getOne(id);
+    let record = await pb.collection('Film').getOne(id);
+    record.imageUrl = pb.files.getURL(record, record.affiche);
     return record;
 }
 
@@ -79,8 +114,14 @@ export async function getTowFilms() {
             sort: 'date_projection', // Trie par la date de projection
         });
 
-        // Retourner les 2 premiers films
-        return records.items;
+        // Ajouter l'URL de l'image à chaque film
+        const filmsWithImages = records.items.map((film) => {
+            film.imageUrl = pb.files.getURL(film, film.affiche); // Récupère l'URL de l'image
+            return film;
+        });
+
+        // Retourner les 2 premiers films avec l'URL de l'image
+        return filmsWithImages;
     } catch (error) {
         console.error('Erreur lors de la récupération des films:', error);
         return [];

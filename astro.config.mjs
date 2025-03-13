@@ -8,5 +8,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  experimental: { svg: true }
+  experimental: { svg: true },
+  output: 'server'
 });

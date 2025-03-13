@@ -1,0 +1,24 @@
+---
+const { ...invite } = Astro.props;
+---
+
+<a href={`/invite/${invite.id}`} class="block">
+    <div
+        class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-200"
+    >
+        <div class="flex flex-col items-center">
+            <!-- Photo de l'invité -->
+            <img
+                src={`http://127.0.0.1:8090/api/files/invite/${invite.id}/${invite.photo}`}
+                alt={`${invite.prenom} ${invite.nom}`}
+                class="w-32 h-32 object-cover rounded-full border-4 border-blue-900 mb-4"
+            />
+
+            <!-- Informations de l'invité -->
+            <h3 class="text-2xl font-semibold text-blue-900">
+                {invite.prenom}
+                {invite.nom}
+            </h3>
+        </div>
+    </div>
+</a>

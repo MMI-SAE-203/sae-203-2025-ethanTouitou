@@ -1,0 +1,21 @@
+---
+import { getInvites } from "../../../backend/backend.mjs";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/CardInvite.astro";
+
+const invites = await getInvites();
+---
+
+<Layout>
+    <section class="py-16 px-8">
+        <h2 class="text-3xl font-semibold text-center text-blue-900 mb-8">
+            Nos Invités
+        </h2>
+
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
+        >
+            {invites.map((invite) => <Card {...invite} />)}
+        </div>
+    </section>
+</Layout>

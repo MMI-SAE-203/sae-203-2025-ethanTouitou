@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Image from "../assets/img/mambreequipe.webp";
+import { Picture } from "astro:assets";
+---
+
+<Layout>
+    <section class="py-16 px-8">
+        <div class="container mx-auto">
+            <!-- Titre de la section -->
+            <h2 class="text-3xl font-semibold text-center text-blue-900 mb-8">
+                À propos du Festival Vis'Sport
+            </h2>
+
+            <!-- Description du festival -->
+            <div class="text-lg text-gray-700 mb-8">
+                <p>
+                    Le festival Vis'Sport est un événement unique qui célèbre la
+                    rencontre entre le cinéma et le sport. Nous mettons en
+                    lumière les histoires inspirantes de sportifs et
+                    d'événements sportifs à travers des courts-métrages, des
+                    documentaires et des vidéos. Chaque année, nous réunissons
+                    des créateurs de films, des sportifs et un public passionné
+                    pour explorer ces deux mondes et découvrir des récits
+                    émouvants et motivants.
+                </p>
+                <p class="mt-4">
+                    Notre mission est de sensibiliser le public aux valeurs du
+                    sport, comme le dépassement de soi, la persévérance et le
+                    travail en équipe, tout en créant un environnement d'échange
+                    et de partage autour du cinéma. Nous offrons aussi un espace
+                    pour les jeunes talents de la scène cinématographique pour
+                    exposer leurs œuvres.
+                </p>
+            </div>
+
+            <!-- Objectifs du festival -->
+            <h3 class="text-2xl font-semibold text-blue-900 mb-4">
+                Nos Objectifs
+            </h3>
+            <ul class="list-disc pl-6 text-lg text-gray-700 mb-8">
+                <li>
+                    <strong>Promouvoir :</strong> Faire découvrir des créations audiovisuelles
+                    qui célèbrent les valeurs du sport.
+                </li>
+                <li>
+                    <strong>Éduquer :</strong> Sensibiliser le public aux valeurs
+                    de dépassement, de persévérance et de travail en équipe.
+                </li>
+                <li>
+                    <strong>Connecter :</strong> Créer un espace d'échange entre
+                    artistes, sportifs et le public.
+                </li>
+            </ul>
+
+            <!-- L'équipe derrière le festival -->
+            <h3 class="text-2xl font-semibold text-blue-900 mb-4">
+                L’équipe derrière le Festival
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Membres de l'équipe -->
+                <div class="text-center">
+                    <Picture
+                        src={Image}
+                        alt="Jean Dupont"
+                        class="w-32 h-32 rounded-full mx-auto mb-4"
+                    />
+                    <p class="font-semibold text-blue-900">Jean Dupont</p>
+                    <p class="text-gray-600">Directeur artistique</p>
+                </div>
+                <div class="text-center">
+                    <Picture
+                        src={Image}
+                        alt="Marie Martin"
+                        class="w-32 h-32 rounded-full mx-auto mb-4"
+                    />
+                    <p class="font-semibold text-blue-900">Marie Martin</p>
+                    <p class="text-gray-600">Responsable communication</p>
+                </div>
+                <div class="text-center">
+                    <Picture
+                        src={Image}
+                        alt="Thomas Leblanc"
+                        class="w-32 h-32 rounded-full mx-auto mb-4"
+                    />
+                    <p class="font-semibold text-blue-900">Thomas Leblanc</p>
+                    <p class="text-gray-600">Responsable technique</p>
+                </div>
+                <div class="text-center">
+                    <Picture
+                        src={Image}
+                        alt="Camille Durand"
+                        class="w-32 h-32 rounded-full mx-auto mb-4"
+                    />
+                    <p class="font-semibold text-blue-900">Camille Durand</p>
+                    <p class="text-gray-600">Chargée des ateliers</p>
+                </div>
+            </div>
+
+            <!-- Message de remerciement -->
+            <p class="text-center text-lg text-gray-700 mt-8">
+                Un grand merci à notre équipe de bénévoles sans qui le festival
+                ne serait pas possible !
+            </p>
+        </div>
+    </section>
+</Layout>
